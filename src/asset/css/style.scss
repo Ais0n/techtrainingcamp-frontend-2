@@ -1,0 +1,48 @@
+$boardColor : #bbada0;
+$cellColor : #cdc1b3;
+
+#myGame {
+    position: relative;
+    top:50px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 0 0 0 0;
+    background-color: goldenrod;
+    #gameTitle {
+        text-align: center;
+        font-weight: 700;
+    }
+    #gameInfo {
+        height: 50px;
+        background-color: aquamarine;
+        .score {
+            font-size: medium;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            
+        }
+    }
+    #gameBoard {
+        height: 400px;
+        background-color: black;
+        .gridRow {
+            margin: 0 0 0 0;
+            height: 25%;
+            background-color: $boardColor;
+            .gridCell{
+                // margin: 10px 10px;
+                 width: 23%;
+                 height: 92%;
+                 margin: 1% 1% 1% 1%;
+                 float: left;
+                 background-color:$cellColor;
+                 border-radius: 10%;
+            }
+        }
+    }
+}
+
+footer {
+    position: fixed;
+    margin: 0 0 0 0;
+    top:95%;
+}

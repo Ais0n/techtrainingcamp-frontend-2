@@ -1,0 +1,43 @@
+#myGame {
+  position: relative;
+  top: 50px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 0 0 0 0;
+  background-color: goldenrod;
+}
+#myGame #gameTitle {
+  text-align: center;
+  font-weight: 700;
+}
+#myGame #gameInfo {
+  height: 50px;
+  background-color: aquamarine;
+}
+#myGame #gameInfo .score {
+  font-size: medium;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+#myGame #gameBoard {
+  height: 400px;
+  background-color: black;
+}
+#myGame #gameBoard .gridRow {
+  margin: 0 0 0 0;
+  height: 25%;
+  background-color: #bbada0;
+}
+#myGame #gameBoard .gridRow .gridCell {
+  width: 23%;
+  height: 92%;
+  margin: 1% 1% 1% 1%;
+  float: left;
+  background-color: #cdc1b3;
+  border-radius: 10%;
+}
+
+footer {
+  position: fixed;
+  margin: 0 0 0 0;
+  top: 95%;
+}
