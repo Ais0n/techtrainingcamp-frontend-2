@@ -1,20 +1,20 @@
 $boardColor : #bbada0;
 $cellColor : #cdc1b3;
-
+$background: #fbf8ef;
 #myGame {
     position: relative;
     top:50px;
     width: 400px;
     margin: 0 auto;
     padding: 0 0 0 0;
-    background-color: goldenrod;
+    //background-color: goldenrod;
     #gameTitle {
         text-align: center;
         font-weight: 700;
     }
     #gameInfo {
         height: 50px;
-        background-color: aquamarine;
+        //background-color: aquamarine;
         .score {
             font-size: medium;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -23,22 +23,62 @@ $cellColor : #cdc1b3;
     }
     #gameBoard {
         height: 400px;
-        background-color: black;
+        background-color: $boardColor;
+        border-radius: 3%;
         .gridRow {
             margin: 0 0 0 0;
-            height: 25%;
-            background-color: $boardColor;
+            //height: 100px;
+            //background-color: $boardColor;
             .gridCell{
                 // margin: 10px 10px;
-                 width: 23%;
-                 height: 92%;
-                 margin: 1% 1% 1% 1%;
-                 float: left;
-                 background-color:$cellColor;
-                 border-radius: 10%;
+                //width: 23%;
+                //height: 92px;
+                //margin: 1% 1% 1% 1%;
+                float: left;
+                background-color:$cellColor;
+                border-radius: 10%;
+                //font-size: 30px;
+                font-weight: bold;
+                text-align: center;
+                //line-height: 92px;
+                color: #666;
             }
         }
     }
+}
+
+.gridRow:nth-of-type(1){
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.gridRow:nth-last-of-type(1){
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.gridCell-3X3{
+    width: 125px;
+    height: 125px;
+    margin: 4px 4px 4px 4px;
+    font-size: 35px;
+    line-height: 125px;  // trick 使得文字垂直居中
+}
+
+.gridCell-4X4{
+    width: 92px;
+    height: 92px;
+    margin: 4px 4px 4px 4px;
+    font-size: 30px;
+    line-height: 92px;  // trick 使得文字垂直居中
+}
+
+.gridCell-5X5{
+    width: 72px;
+    height: 72px;
+    margin: 4px 4px 4px 4px;
+    font-size: 25px;
+    line-height: 72px;  // trick 使得文字垂直居中
 }
 
 footer {
