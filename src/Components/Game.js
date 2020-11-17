@@ -6,6 +6,7 @@ import GameBoard from './GameBoard';
 function Game(){
     const [isNewGame, setNewGame] = useState(true);
     const [boardSize, setBoardSize] = useState(4);
+    const [score, setScore] = useState(0);
     const [gridNumbers, setGridNumbers] = useState([]);
 
     const addOneNumber = (numbers)=>{
@@ -56,11 +57,17 @@ function Game(){
       <div id="myGame">
         <div id="gameTitle">2048 Online Game</div>
         <GameInfo
+          score={score}
           boardSize={boardSize}
           setNewGame={setNewGame}
           setBoardSize={setBoardSize}
         ></GameInfo>
-        <GameBoard isNewGame={isNewGame} boardSize={boardSize} gridNumbers={gridNumbers}></GameBoard>
+        <GameBoard
+          isNewGame={isNewGame}
+          boardSize={boardSize}
+          gridNumbers={gridNumbers}
+          setScore={setScore}
+        ></GameBoard>
       </div>
     );
 }
