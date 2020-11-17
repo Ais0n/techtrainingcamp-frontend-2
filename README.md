@@ -1,9 +1,15 @@
 # Contribution Process
+
 git checkout to create a branch different from master.
+
 Add new features / fix bugs in the newly-created branch.
+
 Push changes to remote repo on own account, pushing the new branching as well.
+
 Create new PR to master.
+
 Wait till PR was reviewed by maintainer.
+
 If PR was rejected, jump to step 2.
 
 # Getting Started with Create React App
