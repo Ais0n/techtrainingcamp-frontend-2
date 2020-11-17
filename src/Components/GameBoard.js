@@ -1,8 +1,14 @@
 import React from 'react';
+import cloneDeep from 'clone-deep';
 
 function GameBoard(props){
-    const renderEachRow = (size)=>{
-        const numbers = new Array(size).fill(0);
+
+    const renderEachRow = (size, numbers)=>{
+        // different css style for different size
+        let copyNumbers = cloneDeep(numbers);
+        if(!copyNumbers){
+            copyNumbers = new Array(size).fill(0);
+        }
         let cellSize = 'gridCell';
         switch (size) {
             case 3:
@@ -17,22 +23,23 @@ function GameBoard(props){
             default:
                 break;
         }
-        return numbers.map((number, index)=>
+        console.log(copyNumbers);
+        return copyNumbers.map((number, index)=>
             <div className={`gridCell ${cellSize}`} key={index}>{number}</div>
         )
     }
 
-    const renderBoard = (size)=>{
+    const renderBoard = (size,gridNumbers)=>{
         const numbers = new Array(size).fill(0);
         return numbers.map((_, index)=>
             <div className='gridRow' key={index}>
-                {renderEachRow(size)}
+                {renderEachRow(size, gridNumbers[index])}
             </div>
         )
     }
     return (
         <div id="gameBoard">
-            {renderBoard(props.boardSize)}
+            {renderBoard(props.boardSize, props.gridNumbers)}
         </div>
     )
 
