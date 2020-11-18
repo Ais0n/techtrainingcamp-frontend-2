@@ -40,7 +40,7 @@ function GameBoard(props){
     return (
         <div id="gameBoard">
             {renderBoard(props.boardSize, props.gridNumbers)}
-            <Tile></Tile>
+            <Tile size={ props.boardSize} position={[1,0]}></Tile>
         </div>
     )
 

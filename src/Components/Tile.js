@@ -1,9 +1,55 @@
 import React from 'react';
+import { useSpring, animated } from "react-spring";
 
 function Tile(props){
-    return(
-        <div className='tile tile-4X4'></div>
-    )
+    // prpos: size:Number position:[0,0]
+    
+
+    // set css accoring to the size
+    const setSizeClass = (size)=>{
+        let tileSize = 'tile';
+        switch (size) {
+            case 3:
+                tileSize += '-3X3';
+                break;
+            case 4:
+                tileSize += '-4X4';
+                break;
+            case 5:
+                tileSize += '-5X5';
+                break;
+            default:
+                break;
+        }
+        return tileSize;
+    }
+
+    // set position based on props
+    const translate = useSpring({
+        from: {
+          //transform: "translateX(0px)",
+          // position: "absolute",
+           left: "0px",
+           top: "0px"
+        },
+        to: {
+          //transform: "translateX(-100px)",
+          position: "absolute",
+          left: `${props.position[0] * 100}px`,
+          top: `${props.position[1] * 100}px`
+        },
+        config: {
+          duration: 1000
+        }
+      });
+    
+
+    return (
+      <animated.div
+        style={translate}
+        className={`tile ${setSizeClass(props.size)}`}
+      ></animated.div>
+    );
 }
 
 export default Tile;
