@@ -39,7 +39,7 @@ function Tile(props){
           top: `${props.position[1] * 100}px`
         },
         config: {
-          duration: 1000
+          duration: 300
         }
       });
     

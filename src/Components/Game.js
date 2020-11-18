@@ -8,7 +8,9 @@ function Game(){
     const [boardSize, setBoardSize] = useState(4);
     const [score, setScore] = useState(0);
     const [gridNumbers, setGridNumbers] = useState([]);
-
+    const [position, setPosition] = useState([0, 0]); // used to test the animation, could be deleted
+    
+    
     const addOneNumber = (numbers)=>{
         let newNumbers = cloneDeep(numbers);
         let size = newNumbers.length;
@@ -43,6 +45,13 @@ function Game(){
     }
 
 
+    const randomPos = () => {
+      let row = Math.floor(Math.random() * boardSize);
+      let col = Math.floor(Math.random() * boardSize);
+      console.log([row, col]);
+      setPosition([row, col]);
+    };
+
     useEffect(() => {
         // run only once
         if(isNewGame){
@@ -67,7 +76,9 @@ function Game(){
           boardSize={boardSize}
           gridNumbers={gridNumbers}
           setScore={setScore}
+          position={position}
         ></GameBoard>
+        <button onClick={randomPos}>Move Randomly</button>
       </div>
     );
 }

@@ -23,7 +23,6 @@ function GameBoard(props){
             default:
                 break;
         }
-        console.log(copyNumbers);
         return copyNumbers.map((number, index)=>
             <div className={`gridCell ${cellSize}`} key={index}>{number}</div>
         )
@@ -40,7 +39,7 @@ function GameBoard(props){
     return (
         <div id="gameBoard">
             {renderBoard(props.boardSize, props.gridNumbers)}
-            <Tile size={ props.boardSize} position={[1,0]}></Tile>
+            <Tile size={ props.boardSize} position={props.position}></Tile>
         </div>
     )
 
