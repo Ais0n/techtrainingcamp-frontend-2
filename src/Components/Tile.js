@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Tile(){
+function Tile(props){
     return(
-        <div className='tile'></div>
+        <div className='tile tile-4X4'></div>
     )
 }
 

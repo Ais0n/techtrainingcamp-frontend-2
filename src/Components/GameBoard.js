@@ -1,6 +1,6 @@
 import React from 'react';
 import cloneDeep from 'clone-deep';
-
+import Tile from './Tile';
 function GameBoard(props){
 
     const renderEachRow = (size, numbers)=>{
@@ -40,6 +40,7 @@ function GameBoard(props){
     return (
         <div id="gameBoard">
             {renderBoard(props.boardSize, props.gridNumbers)}
+            <Tile></Tile>
         </div>
     )
 
