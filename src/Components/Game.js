@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import cloneDeep from 'clone-deep';
 import '../asset/css/dist/style.css'
 import GameInfo from './GameInfo';
@@ -8,9 +9,11 @@ function Game(){
     const [boardSize, setBoardSize] = useState(4);
     const [score, setScore] = useState(0);
     const [gridNumbers, setGridNumbers] = useState([]);
-    const [position, setPosition] = useState([0, 0]); // used to test the animation, could be deleted
+    const [tiles, setTiles] = useState({}); // serve as a array to store info of all the tiles
     
-    
+    const [position, setPosition] = useState([0, 0]); // just for test
+    const value = 0; // just for test
+
     const addOneNumber = (numbers)=>{
         let newNumbers = cloneDeep(numbers);
         let size = newNumbers.length;
@@ -52,6 +55,24 @@ function Game(){
       setPosition([row, col]);
     };
 
+    const addTile = (position, value)=>{
+      // add a tile object
+      // key:uuid
+      // value:number
+      // position:array [0,0]
+      // visible: boolean
+      const curTiles = cloneDeep(tiles);
+      const newTile = {
+        key: uuidv4(),
+        value: value,
+        position: position,
+        visible: true
+      }
+      curTiles[newTile.key] = newTile;
+      setTiles(curTiles);
+      console.log(curTiles);
+    }
+
     useEffect(() => {
         // run only once
         if(isNewGame){
@@ -78,7 +99,8 @@ function Game(){
           setScore={setScore}
           position={position}
         ></GameBoard>
-        <button onClick={randomPos}>Move Randomly</button>
+        <button onClick={(e)=>randomPos()}>Move Randomly</button>
+        <button onClick={(e)=>addTile(position,value)}>Add a tile (observe in the console)</button>
       </div>
     );
 }
