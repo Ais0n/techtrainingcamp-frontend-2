@@ -36,10 +36,24 @@ function GameBoard(props){
             </div>
         )
     }
+
+    const renderTiles = (tiles)=>{
+        return tiles.map((tile)=>
+            <Tile
+              key={tile.key}
+              size={props.boardSize}
+              position={props.position}
+              value={tile.value}
+              visible={tile.visible}
+            ></Tile>
+        )
+    }
+
     return (
         <div id="gameBoard">
             {renderBoard(props.boardSize, props.gridNumbers)}
-            <Tile size={ props.boardSize} position={props.position}></Tile>
+            {/* <Tile size={ props.boardSize} position={props.position}></Tile> */}
+            {renderTiles(props.tiles)}
         </div>
     )
 

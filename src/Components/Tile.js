@@ -3,7 +3,10 @@ import { useSpring, animated } from "react-spring";
 
 function Tile(props){
     // prpos: size:Number position:[0,0]
-    
+    const pixleOfSize = new Map();
+    pixleOfSize.set(3, 133);
+    pixleOfSize.set(4, 100);
+    pixleOfSize.set(5, 80);
 
     // set css accoring to the size
     const setSizeClass = (size)=>{
@@ -29,14 +32,14 @@ function Tile(props){
         from: {
           //transform: "translateX(0px)",
           // position: "absolute",
-           left: "0px",
-           top: "0px"
+           //left: "0px",
+           //top: "0px"
         },
         to: {
           //transform: "translateX(-100px)",
           position: "absolute",
-          left: `${props.position[0] * 100}px`,
-          top: `${props.position[1] * 100}px`
+          left: `${props.position[0] * pixleOfSize.get(props.size)}px`,
+          top: `${props.position[1] * pixleOfSize.get(props.size)}px`
         },
         config: {
           duration: 300

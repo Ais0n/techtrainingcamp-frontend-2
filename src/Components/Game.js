@@ -6,10 +6,10 @@ import GameInfo from './GameInfo';
 import GameBoard from './GameBoard';
 function Game(){
     const [isNewGame, setNewGame] = useState(true);
-    const [boardSize, setBoardSize] = useState(4);
+    const [boardSize, setBoardSize] = useState(5);
     const [score, setScore] = useState(0);
     const [gridNumbers, setGridNumbers] = useState([]);
-    const [tiles, setTiles] = useState({}); // serve as a array to store info of all the tiles
+    const [tiles, setTiles] = useState([]); // serve as a array to store info of all the tiles
     
     const [position, setPosition] = useState([0, 0]); // just for test
     const value = 0; // just for test
@@ -68,7 +68,7 @@ function Game(){
         position: position,
         visible: true
       }
-      curTiles[newTile.key] = newTile;
+      curTiles.push(newTile)
       setTiles(curTiles);
       console.log(curTiles);
     }
@@ -98,6 +98,7 @@ function Game(){
           gridNumbers={gridNumbers}
           setScore={setScore}
           position={position}
+          tiles={tiles}
         ></GameBoard>
         <button onClick={(e)=>randomPos()}>Move Randomly</button>
         <button onClick={(e)=>addTile(position,value)}>Add a tile (observe in the console)</button>
