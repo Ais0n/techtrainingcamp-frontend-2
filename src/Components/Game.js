@@ -12,7 +12,7 @@ function Game(){
     const [tiles, setTiles] = useState([]); // serve as a array to store info of all the tiles
     
     const [position, setPosition] = useState([0, 0]); // just for test
-    const value = 0; // just for test
+    const [value, setvalue] = useState(2);; // just for test
 
     const addOneNumber = (numbers)=>{
         let newNumbers = cloneDeep(numbers);
@@ -53,6 +53,18 @@ function Game(){
       let col = Math.floor(Math.random() * boardSize);
       console.log([row, col]);
       setPosition([row, col]);
+    };
+
+    const randomValue = () => {
+      // for test
+      // value could be 2,4,8,16
+      let val = value;
+      while(val===value){
+        let rand = Math.floor(Math.random() * 4);
+        val = 2**(rand+1);
+      }
+      setvalue(val);
+      console.log("value= ",value);
     };
 
     const addTile = (position, value)=>{
@@ -99,9 +111,11 @@ function Game(){
           setScore={setScore}
           position={position}
           tiles={tiles}
+          tileValue = {value} // TileValue for test
         ></GameBoard>
         <button onClick={(e)=>randomPos()}>Move Randomly</button>
         <button onClick={(e)=>addTile(position,value)}>Add a tile (observe in the console)</button>
+        <button onClick={(e)=>randomValue()}>Change Value</button>
       </div>
     );
 }

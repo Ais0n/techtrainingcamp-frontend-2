@@ -27,6 +27,32 @@ function Tile(props){
         return tileSize;
     }
 
+    const colorOfValue2 = "#eee4da";
+    const colorOfValue4 = "#ede1c9";
+    const colorOfValue8 = "#f3b27a";
+    const colorOfValue16 = "#f69664";
+
+    const setColor = (value)=>{
+      let color = "";
+      switch (value) {
+        case 2:
+          color = colorOfValue2;
+          break;
+        case 4:
+          color = colorOfValue4;
+          break;
+        case 8:
+          color = colorOfValue8;
+          break;
+        case 16:
+          color = colorOfValue16;
+          break;
+        default:
+          color = "red";
+          break;
+      }
+      return color;
+    }
     // set position based on props
     const translate = useSpring({
         from: {
@@ -39,7 +65,8 @@ function Tile(props){
           //transform: "translateX(-100px)",
           position: "absolute",
           left: `${props.position[0] * pixleOfSize.get(props.size)}px`,
-          top: `${props.position[1] * pixleOfSize.get(props.size)}px`
+          top: `${props.position[1] * pixleOfSize.get(props.size)}px`,
+          backgroundColor: setColor(props.value)
         },
         config: {
           duration: 300
@@ -51,7 +78,7 @@ function Tile(props){
       <animated.div
         style={translate}
         className={`tile ${setSizeClass(props.size)}`}
-      ></animated.div>
+    >{props.value}</animated.div>
     );
 }
 

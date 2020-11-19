@@ -43,7 +43,7 @@ function GameBoard(props){
               key={tile.key}
               size={props.boardSize}
               position={props.position}
-              value={tile.value}
+              value={props.tileValue}
               visible={tile.visible}
             ></Tile>
         )
