@@ -6,7 +6,7 @@ import GameInfo from './GameInfo';
 import GameBoard from './GameBoard';
 function Game(){
     const [isNewGame, setNewGame] = useState(true);
-    const [boardSize, setBoardSize] = useState(5);
+    const [boardSize, setBoardSize] = useState(4);
     const [score, setScore] = useState(0);
     const [gridNumbers, setGridNumbers] = useState([]);
     const [tiles, setTiles] = useState([]); // serve as a array to store info of all the tiles
