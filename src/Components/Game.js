@@ -61,26 +61,28 @@ function Game() {
   }
 
   const mergeGrid = (direction) => {
-    var newGrid = [];
+    var newGrid = [], addscore = 0;
     switch (direction) {
       case 0: //left
-        newGrid = mergeRow(0); break;
+        [newGrid, addscore] = mergeRow(0); break;
       case 1: //up
-        newGrid = mergeColumn(0); break;
+        [newGrid, addscore] = mergeColumn(0); break;
       case 2: //right
-        newGrid = mergeRow(1); break;
+        [newGrid, addscore] = mergeRow(1); break;
       case 3: //down
-        newGrid = mergeColumn(1); break;
+        [newGrid, addscore] = mergeColumn(1); break;
       default: break;
     }
     var res = (newGrid === gridNumbers);
     if (!res) newGrid = addOneNumber(newGrid);
+    setScore(score + addscore);
     setGridNumbers(newGrid);
   }
 
 
   const mergeRow = (isReverse) => {
     let newGrid = cloneDeep(gridNumbers);
+    let addscore = 0;
     console.log(newGrid);
     //console.table(gridNumbers);
     for (let i = 0; i < boardSize; i++) {
@@ -94,6 +96,7 @@ function Game() {
         if (newGrid[i][j] === 0) break;
         if (newGrid[i][j] === newGrid[i][j + 1]) {
           newGrid[i][j] += newGrid[i][j + 1];
+          addscore += newGrid[i][j];
           for (let k = j + 1; k < boardSize - 1; k++) {
             newGrid[i][k] = newGrid[i][k + 1];
           }
@@ -103,11 +106,12 @@ function Game() {
       //reverse the row
       if (isReverse) newGrid[i] = newGrid[i].reverse();
     }
-    return newGrid;
+    return [newGrid, addscore];
   }
 
   const mergeColumn = (isReverse) => {
     let newGrid = cloneDeep(gridNumbers);
+    let addscore = 0;
     for (let i = 0; i < boardSize; i++) {
       if (isReverse) {  //Reverse the column
         for (let j = 0; j < boardSize - j - 1; j++) {
@@ -130,6 +134,7 @@ function Game() {
         if (newGrid[j][i] === 0) break;
         if (newGrid[j][i] === newGrid[j + 1][i]) {
           newGrid[j][i] += newGrid[j + 1][i];
+          addscore += newGrid[j][i];
           for (let k = j + 1; k < boardSize - 1; k++) {
             newGrid[k][i] = newGrid[k + 1][i];
           }
@@ -144,7 +149,7 @@ function Game() {
         }
       }
     }
-    return newGrid;
+    return [newGrid, addscore];
   }
 
   const checkLose = () => {
