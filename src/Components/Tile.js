@@ -80,11 +80,14 @@ function Tile(props){
           duration: 300
         }
       });
+      const hidden = useSpring({
+        delay:500,
+        to:{visibility: `${props.visible? "visible":"hidden"}`},
+      })
     
-
     return (
       <animated.div
-        style={translate}
+        style={{...translate,...hidden}}
         className={`tile ${setSizeClass(props.size)}`}
     >{props.value}</animated.div>
     );

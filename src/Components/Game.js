@@ -83,13 +83,15 @@ function Game() {
     let newTiles=[];
     for (var i = 0; i < boardSize; i++) {
       for (var j = 0; j < boardSize; j++) {
-        const newTile = {
-          key: uuidv4(),
-          value: newGrid[i][j],
-          position: [i, j],
-          visible: true
+        if(newGrid[i][j]!==0){
+          const newTile = {
+            key: uuidv4(),
+            value: newGrid[i][j],
+            position: [j, i],
+            visible: true
+          }
+          newTiles.push(newTile);
         }
-        newTiles.push(newTile);
       }
     }
     setTiles(newTiles);
@@ -219,6 +221,17 @@ function Game() {
     console.log(curTiles);
   }
 
+  const testState = ()=>{
+    const newTiles = tiles.map((tile)=>{
+      return {
+        key: tile.key,
+        value: tile.value,
+        position: [tile.position[0],boardSize-1],
+        visible: false
+      }
+    }) 
+    setTiles(newTiles);
+  }
   useEffect(() => {
     // run only once
     if (isNewGame) {
@@ -252,6 +265,7 @@ function Game() {
       <button onClick={(e) => randomPos()}>Move Randomly</button>
       <button onClick={(e) => addTile(position, value)}>Add a tile (observe in the console)</button>
       <button onClick={(e) => randomValue()}>Change Value</button>
+      <button onClick={(e) => testState()}>Logic test</button>
     </div>
   );
 }
