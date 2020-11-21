@@ -65,15 +65,20 @@ function Tile(props){
     /**
      *  设置动画参数
      */
+    // tile移动动画
     const translate = useSpring({
         from: {
           //transform: "translateX(0px)",
+          //transform: props.isNew? `scale(0.5)` : `scale(1)`
           // position: "absolute",
            //left: "0px",
            //top: "0px"
+          //scale: props.isNew? 0.8 : 1
         },
         to: {
           //transform: "translateX(-100px)",
+          //transform:`scale(1)`,
+          //transform: `scale(1)`,
           position: "absolute",
           left: `${props.position[0] * pixleOfSize.get(props.size)}px`,
           top: `${props.position[1] * pixleOfSize.get(props.size)}px`,
@@ -83,14 +88,30 @@ function Tile(props){
           duration: 300
         }
       });
-      const hidden = useSpring({
-        delay:500,
+
+      // tile消失动画
+    const hidden = useSpring({
+        delay:300,
         to:{visibility: `${props.visible? "visible":"hidden"}`},
       })
-    
+
+    // tile弹出动画
+    const popUp = useSpring({
+        delay:300,
+        from: {
+          transform: props.isNew? `scale(0)` : `scale(1)`
+        },
+        to: {
+          transform: `scale(1)`
+        },
+        config:{
+          duration:100
+        }
+    })  
+
     return (
       <animated.div
-        style={{...translate,...hidden}}
+        style={{...translate,...hidden, ...popUp}}
         className={`tile ${setSizeClass(props.size)}`}
     >{props.value}</animated.div>
     );
@@ -104,7 +125,9 @@ Tile.propTypes = {
   /** Tile上显示的值 e.g 2,4,8,16 etc. */
   value: PropTypes.number,
   /** Tile是否可见 */
-  visible: PropTypes.bool
+  visible: PropTypes.bool,
+  /** 是否是新tile */
+  isNew: PropTypes.bool
 }
 
 export default Tile;

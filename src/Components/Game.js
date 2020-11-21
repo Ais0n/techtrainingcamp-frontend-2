@@ -201,23 +201,24 @@ function Game() {
   }
 
 
-  // const addTile = (position, value) => {
-  //   // add a tile object
-  //   // key:uuid
-  //   // value:number
-  //   // position:array [0,0]
-  //   // visible: boolean
-  //   const curTiles = cloneDeep(tiles);
-  //   const newTile = {
-  //     key: uuidv4(),
-  //     value: value,
-  //     position: position,
-  //     visible: true
-  //   }
-  //   curTiles.push(newTile)
-  //   setTiles(curTiles);
-  //   console.log(curTiles);
-  // }
+  const addTile = (position, value) => {
+    // add a tile object
+    // key:uuid
+    // value:number
+    // position:array [0,0]
+    // visible: boolean
+    const curTiles = cloneDeep(tiles);
+    const newTile = {
+      key: uuidv4(),
+      value: value,
+      position: position,
+      visible: true,
+      new: true
+    }
+    curTiles.push(newTile)
+    setTiles(curTiles);
+    console.log(curTiles);
+  }
 
   const testState = ()=>{
     const newTiles = tiles.map((tile)=>{
@@ -261,6 +262,7 @@ function Game() {
         //tileValue={value} // TileValue for test
       ></GameBoard>
       <button onClick={(e) => testState()}>Logic test</button>
+      <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button>
     </div>
   );
 }
