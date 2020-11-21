@@ -1,20 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import cloneDeep from 'clone-deep';
 import '../asset/css/dist/style.css'
 import GameInfo from './GameInfo';
 import GameBoard from './GameBoard';
-function Game(){
-    const [isNewGame, setNewGame] = useState(true);
-    const [boardSize, setBoardSize] = useState(4);
-    const [score, setScore] = useState(0);
-    const [gridNumbers, setGridNumbers] = useState([]);
-    const [tiles, setTiles] = useState([]); // serve as a array to store info of all the tiles
-    
-    const [position, setPosition] = useState([0, 0]); // just for test
-    const [value, setvalue] = useState(2);; // just for test
-    const [isLose, setLose] = useState(false);
-  
+function Game() {
+  const [isNewGame, setNewGame] = useState(true);
+  const [boardSize, setBoardSize] = useState(4);
+  const [score, setScore] = useState(0);
+  const [gridNumbers, setGridNumbers] = useState([]);
+  const [tiles, setTiles] = useState([]); // serve as a array to store info of all the tiles
+
+  const [position, setPosition] = useState([0, 0]); // just for test
+  const [value, setvalue] = useState(2);; // just for test
+  const [isLose, setLose] = useState(false);
+
   const addOneNumber = (numbers) => {
     let newNumbers = cloneDeep(numbers);
     let size = newNumbers.length;
@@ -80,6 +80,20 @@ function Game(){
     }
     var res = (newGrid === gridNumbers);
     if (!res) newGrid = addOneNumber(newGrid);
+    let newTiles=[];
+    for (var i = 0; i < boardSize; i++) {
+      for (var j = 0; j < boardSize; j++) {
+        const newTile = {
+          key: uuidv4(),
+          value: newGrid[i][j],
+          position: [i, j],
+          visible: true
+        }
+        newTiles.push(newTile);
+      }
+    }
+    setTiles(newTiles);
+    console.log(newTiles);
     setScore(score + addscore);
     setGridNumbers(newGrid);
   }
@@ -168,78 +182,78 @@ function Game(){
     return true;
   }
 
-    const randomPos = () => {
-      let row = Math.floor(Math.random() * boardSize);
-      let col = Math.floor(Math.random() * boardSize);
-      console.log([row, col]);
-      setPosition([row, col]);
-    };
+  const randomPos = () => {
+    let row = Math.floor(Math.random() * boardSize);
+    let col = Math.floor(Math.random() * boardSize);
+    console.log([row, col]);
+    setPosition([row, col]);
+  };
 
-    const randomValue = () => {
-      // for test
-      // value could be 2,4,8,16
-      let val = value;
-      while(val===value){
-        let rand = Math.floor(Math.random() * 4);
-        val = 2**(rand+1);
-      }
-      setvalue(val);
-      console.log("value= ",value);
-    };
-
-    const addTile = (position, value)=>{
-      // add a tile object
-      // key:uuid
-      // value:number
-      // position:array [0,0]
-      // visible: boolean
-      const curTiles = cloneDeep(tiles);
-      const newTile = {
-        key: uuidv4(),
-        value: value,
-        position: position,
-        visible: true
-      }
-      curTiles.push(newTile)
-      setTiles(curTiles);
-      console.log(curTiles);
+  const randomValue = () => {
+    // for test
+    // value could be 2,4,8,16
+    let val = value;
+    while (val === value) {
+      let rand = Math.floor(Math.random() * 4);
+      val = 2 ** (rand + 1);
     }
+    setvalue(val);
+    console.log("value= ", value);
+  };
 
-    useEffect(() => {
-      // run only once
-      if (isNewGame) {
-        initialNumbers(boardSize, setGridNumbers);
-        setNewGame(false);
-      }
-      document.addEventListener("keyup", handleKeyUp);
-      return () => document.removeEventListener("keyup", handleKeyUp);
-      // console.table(gridNumbers);
-      // console.log(isNewGame);
-    }, [gridNumbers]);
+  const addTile = (position, value) => {
+    // add a tile object
+    // key:uuid
+    // value:number
+    // position:array [0,0]
+    // visible: boolean
+    const curTiles = cloneDeep(tiles);
+    const newTile = {
+      key: uuidv4(),
+      value: value,
+      position: position,
+      visible: true
+    }
+    curTiles.push(newTile)
+    setTiles(curTiles);
+    console.log(curTiles);
+  }
 
-    return (
-      <div id="myGame">
-        <div id="gameTitle">2048 Online Game</div>
-        <GameInfo
-          score={score}
-          boardSize={boardSize}
-          setNewGame={setNewGame}
-          setBoardSize={setBoardSize}
-        ></GameInfo>
-        <GameBoard
-          isNewGame={isNewGame}
-          boardSize={boardSize}
-          gridNumbers={gridNumbers}
-          setScore={setScore}
-          position={position}
-          tiles={tiles}
-          tileValue = {value} // TileValue for test
-        ></GameBoard>
-        <button onClick={(e)=>randomPos()}>Move Randomly</button>
-        <button onClick={(e)=>addTile(position,value)}>Add a tile (observe in the console)</button>
-        <button onClick={(e)=>randomValue()}>Change Value</button>
-      </div>
-    );
+  useEffect(() => {
+    // run only once
+    if (isNewGame) {
+      initialNumbers(boardSize, setGridNumbers);
+      setNewGame(false);
+    }
+    document.addEventListener("keyup", handleKeyUp);
+    return () => document.removeEventListener("keyup", handleKeyUp);
+    // console.table(gridNumbers);
+    // console.log(isNewGame);
+  }, [gridNumbers, tiles]);
+
+  return (
+    <div id="myGame">
+      <div id="gameTitle">2048 Online Game</div>
+      <GameInfo
+        score={score}
+        boardSize={boardSize}
+        setNewGame={setNewGame}
+        setBoardSize={setBoardSize}
+      ></GameInfo>
+      <GameBoard
+        isNewGame={isNewGame}
+        boardSize={boardSize}
+        gridNumbers={gridNumbers}
+        setScore={setScore}
+        position={position}
+        tiles={tiles}
+        tileValue={value} // TileValue for test
+      ></GameBoard>
+      <button onClick={(e) => randomPos()}>Move Randomly</button>
+      <button onClick={(e) => addTile(position, value)}>Add a tile (observe in the console)</button>
+      <button onClick={(e) => randomValue()}>Change Value</button>
+    </div>
+  );
 }
 
 export default Game;
