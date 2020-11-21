@@ -11,8 +11,8 @@ function Game() {
   const [gridNumbers, setGridNumbers] = useState([]);
   const [tiles, setTiles] = useState([]); // serve as a array to store info of all the tiles
 
-  const [position, setPosition] = useState([0, 0]); // just for test
-  const [value, setvalue] = useState(2);; // just for test
+  //const [position, setPosition] = useState([0, 0]); // just for test
+  //const [value, setvalue] = useState(2);; // just for test
   const [isLose, setLose] = useState(false);
 
   const addOneNumber = (numbers) => {
@@ -162,7 +162,7 @@ function Game() {
         if (newGrid[j][i] !== 0) {
           newGrid[k++][i] = newGrid[j][i];
         }
-        if (j == boardSize - 1) {
+        if (j === boardSize - 1) {
           for (let l = k; l < boardSize; l++)newGrid[l][i] = 0;
         }
       }
@@ -200,42 +200,24 @@ function Game() {
     return true;
   }
 
-  const randomPos = () => {
-    let row = Math.floor(Math.random() * boardSize);
-    let col = Math.floor(Math.random() * boardSize);
-    console.log([row, col]);
-    setPosition([row, col]);
-  };
 
-  const randomValue = () => {
-    // for test
-    // value could be 2,4,8,16
-    let val = value;
-    while (val === value) {
-      let rand = Math.floor(Math.random() * 4);
-      val = 2 ** (rand + 1);
-    }
-    setvalue(val);
-    console.log("value= ", value);
-  };
-
-  const addTile = (position, value) => {
-    // add a tile object
-    // key:uuid
-    // value:number
-    // position:array [0,0]
-    // visible: boolean
-    const curTiles = cloneDeep(tiles);
-    const newTile = {
-      key: uuidv4(),
-      value: value,
-      position: position,
-      visible: true
-    }
-    curTiles.push(newTile)
-    setTiles(curTiles);
-    console.log(curTiles);
-  }
+  // const addTile = (position, value) => {
+  //   // add a tile object
+  //   // key:uuid
+  //   // value:number
+  //   // position:array [0,0]
+  //   // visible: boolean
+  //   const curTiles = cloneDeep(tiles);
+  //   const newTile = {
+  //     key: uuidv4(),
+  //     value: value,
+  //     position: position,
+  //     visible: true
+  //   }
+  //   curTiles.push(newTile)
+  //   setTiles(curTiles);
+  //   console.log(curTiles);
+  // }
 
   const testState = ()=>{
     const newTiles = tiles.map((tile)=>{
@@ -274,13 +256,10 @@ function Game() {
         boardSize={boardSize}
         gridNumbers={gridNumbers}
         setScore={setScore}
-        position={position}
+        //position={position}
         tiles={tiles}
-        tileValue={value} // TileValue for test
+        //tileValue={value} // TileValue for test
       ></GameBoard>
-      <button onClick={(e) => randomPos()}>Move Randomly</button>
-      <button onClick={(e) => addTile(position, value)}>Add a tile (observe in the console)</button>
-      <button onClick={(e) => randomValue()}>Change Value</button>
       <button onClick={(e) => testState()}>Logic test</button>
     </div>
   );

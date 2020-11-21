@@ -46,7 +46,10 @@ function Tile(props){
     colorOfValue.set(4,"#ede1c9");
     colorOfValue.set(8,"#f3b27a");
     colorOfValue.set(16,"#f69664");
-
+    colorOfValue.set(32,"#f77b5f");
+    colorOfValue.set(64,"#f75f3a");
+    colorOfValue.set(128,"#edd074");
+    colorOfValue.set(256,"#ff4e00");
     /**
      * 根据Tile得值返回对应颜色
      * @param {number} value 
