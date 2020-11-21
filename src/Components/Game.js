@@ -42,6 +42,12 @@ function Game(){
         console.table(numbers);
     }
 
+    const handleKeyUp = (e) => {
+      //if the key is not an arrow key, return
+      if (e.keyCode < 37 || e.keyCode > 40) return;
+      const direction = e.keyCode - 37;
+      console.log(direction);
+    }
 
     useEffect(() => {
         // run only once
@@ -49,6 +55,7 @@ function Game(){
             initialNumbers(boardSize,setGridNumbers);
             setNewGame(false);
         }
+        document.addEventListener("keyup", handleKeyUp);
         // console.table(gridNumbers);
         // console.log(isNewGame);
       },[]);
