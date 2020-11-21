@@ -48,6 +48,22 @@ function Game() {
       numbers = addOneNumber(numbers);
       numbers = addOneNumber(numbers);
       setGridNumbers(numbers);
+      let newTiles=[];
+      for (var i = 0; i < boardSize; i++) {
+        for (var j = 0; j < boardSize; j++) {
+          if(numbers[i][j]!==0){
+            const newTile = {
+              key: uuidv4(),
+              value: numbers[i][j],
+              position: [j, i],
+              visible: true
+            }
+            newTiles.push(newTile);
+          }
+        }
+      }
+      setTiles(newTiles);
+      console.log(newTiles);
     }
     else {
       console.warn("size should be 3 or 4 or 5, instead of", size);
