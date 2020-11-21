@@ -25,6 +25,7 @@ $background: #fbf8ef;
         height: 400px;
         background-color: $boardColor;
         border-radius: 3%;
+        position: relative;
         .gridRow {
             margin: 0 0 0 0;
             //height: 100px;
@@ -44,6 +45,13 @@ $background: #fbf8ef;
                 color: #666;
             }
         }
+        .tile{
+            background-color:#233;
+            border-radius: 10%;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+        }
     }
 }
 
@@ -57,7 +65,7 @@ $background: #fbf8ef;
     border-bottom-right-radius: 10px;
 }
 
-.gridCell-3X3{
+.gridCell-3X3, .tile-3X3{
     width: 125px;
     height: 125px;
     margin: 4px 4px 4px 4px;
@@ -65,7 +73,7 @@ $background: #fbf8ef;
     line-height: 125px;  // trick 使得文字垂直居中
 }
 
-.gridCell-4X4{
+.gridCell-4X4, .tile-4X4{
     width: 92px;
     height: 92px;
     margin: 4px 4px 4px 4px;
@@ -73,13 +81,21 @@ $background: #fbf8ef;
     line-height: 92px;  // trick 使得文字垂直居中
 }
 
-.gridCell-5X5{
+.tile-4X4{
+    width: 92px;
+    height: 92px;
+    margin: 4px 4px 4px 4px;
+    font-size: 30px;
+    line-height: 92px;  // trick 使得文字垂直居中
+}
+.gridCell-5X5, .tile-5X5{
     width: 72px;
     height: 72px;
     margin: 4px 4px 4px 4px;
     font-size: 25px;
     line-height: 72px;  // trick 使得文字垂直居中
 }
+
 
 footer {
     position: fixed;
