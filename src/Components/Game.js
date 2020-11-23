@@ -219,6 +219,94 @@ function Game() {
     setTiles(curTiles);
     console.log(curTiles);
   }
+  
+  /**
+   * 模拟算法返回的数据
+   */
+  // 初始化旧的Tiles
+  const createTiles = ()=>{
+    const tiles = [];
+    // 假设现在是回合1，玩家操作后，tiles的情况如下
+    // 包含3中不同类型的tile
+    // 1. 新增加的tile 既有每回合固定新增的一个tile，也包含合并后初始化的一个tile
+    // 2. 移动后并没有合并的tile
+    // 3. 合并后消失的tile
+    //  4 0 0 0
+    //  0 0 0 0
+    //  0 0 2 0
+    //  0 0 2 0
+    // 新增加的tile
+    tiles.push({
+      key : uuidv4(),
+      value: 4,
+      position: [0,0],
+      visible: true,
+      isNew:  true
+    });
+    // 未合并的tile
+    tiles.push({
+      key : uuidv4(),
+      value: 2,
+      position: [2,2],
+      visible: true,
+      isNew:  false
+    });
+    tiles.push({
+      key : uuidv4(),
+      value: 2,
+      position: [2,3],
+      visible: true,
+      isNew:  false
+    });
+    // 合并后消失的tile
+    tiles.push({
+      key : uuidv4(),
+      value: 8,
+      position: [1,1],
+      visible: false,
+      isNew:  false
+    });
+    setTiles(tiles);
+  }
+  // 回合2 玩家按下方向键下， 则棋盘数据如下
+  // 0 0 0 0
+  // 0 0 2 0    // 这一行的2是新增的
+  // 0 0 0 0
+  // 4 0 4 0
+  /**
+   *  模拟算法的返回值
+   */
+  const tilesMovement = new Map();  
+  tilesMovement.set("0,0", {newPos: [0,3], visible:true, isNew: false});
+  tilesMovement.set("2,2", {newPos: [2,3], visible:false, isNew: false}); 
+  tilesMovement.set("2,3", {newPos: [2,3], visible:false, isNew: false});
+  const testNewTiles = [{position:[2,3], value:4}, {position:[2,1], value:2}];
+  /**
+   * 根据算法返回的结果对tiles进行更新
+   */
+  const updateTiles = (tilesMovement,testNewTiles)=>{
+    // 首先删除visible===false的tile
+    const allVisibleTiles = tiles.filter(tile=>tile.visible===true);
+    // 其次更新tiles的位置，并将isNew设置为false
+    console.log("allVisibleTiles",allVisibleTiles);
+    const tilesNewPos = allVisibleTiles.map(tile=>{
+      tile.position=tilesMovement.get(tile.position.toString()).newPos;
+      tile.isNew = false;
+      return tile;
+    });
+    console.log("tilesNewPos",tilesNewPos);
+    // 添加所有新tiles
+    for(let i=0;i<testNewTiles.length;i++){
+      tilesNewPos.push({
+        key : uuidv4(),
+        value: testNewTiles[i].value,
+        position: testNewTiles[i].position,
+        visible: true,
+        isNew:  true
+      })
+    }
+    setTiles(tilesNewPos);
+  }
 
   const testState = ()=>{
     const newTiles = tiles.map((tile)=>{
@@ -263,6 +351,8 @@ function Game() {
       ></GameBoard>
       <button onClick={(e) => testState()}>Logic test</button>
       <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button>
+      <button onClick={(e)=> createTiles()}>Create some tiles</button>
+      <button onClick={(e)=>updateTiles(tilesMovement,testNewTiles)}>Move Down</button>
     </div>
   );
 }
