@@ -289,6 +289,7 @@ function Game() {
   const updateTiles = (tilesMovement,testNewTiles)=>{
     // 首先删除visible===false的tile
     // 一定要先删除不可见的tile，再更新剩下的tiles
+    // 此时棋盘上不应该有两个可见的tile处于同一位置
     const allVisibleTiles = tiles.filter(tile=>tile.visible===true);
     // 其次更新tiles的位置，并将isNew设置为false
     console.log("allVisibleTiles",allVisibleTiles);
@@ -357,8 +358,8 @@ function Game() {
       ></GameBoard>
       {/* <button onClick={(e) => testState()}>Logic test</button> */}
       {/* <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button> */}
-      <button onClick={(e)=> createTiles()}>Create some tiles</button>
-      <button onClick={(e)=>updateTiles(tilesMovement,testNewTiles)}>Move Down</button>
+      <button onClick={(e)=> createTiles()}>Reset tiles</button>
+      <button onClick={(e)=>updateTiles(tilesMovement,testNewTiles)}>Move Down（不要单独按）</button>
     </div>
   );
 }
