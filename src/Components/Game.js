@@ -149,22 +149,6 @@ function Game() {
     for (let i = 0; i < boardSize; i++) {
       //reverse the row
       if (isReverse) newGrid[i] = newGrid[i].reverse();
-      /*
-      //shift the row left
-      newGrid[i] = newGrid[i].filter(x => x !== 0);
-      for (let j = newGrid[i].length; j < boardSize; j++)newGrid[i][j] = 0;
-      //merge the row
-      for (let j = 0; j < boardSize - 1; j++) {
-        if (newGrid[i][j] === 0) break;
-        if (newGrid[i][j] === newGrid[i][j + 1]) {
-          newGrid[i][j] += newGrid[i][j + 1];
-          addscore += newGrid[i][j];
-          for (let k = j + 1; k < boardSize - 1; k++) {
-            newGrid[i][k] = newGrid[i][k + 1];
-          }
-          newGrid[i][boardSize - 1] = 0;
-        }
-      }*/
       for ([j, k, left_bound] = [0, -1, 0]; j < boardSize; j++) {
         if (newGrid[i][j] === 0) continue;
         if (k === -1) k = j;
@@ -179,6 +163,7 @@ function Game() {
         }
         else { //Merge
           newGrid[i][left_bound] = newGrid[i][j] * 2;
+          addscore += newGrid[i][left_bound];
           tilesMovement.set(
             isReverse ? [boardSize - k - 1, i].toString() : [k, i].toString(),
             { newPos: (isReverse ? [boardSize - left_bound - 1, i] : [left_bound, i]), visible: false, isNew: false }
@@ -225,28 +210,6 @@ function Game() {
           newGrid[boardSize - 1 - j][i] = tmp;
         }
       }
-      /*
-      //Shift the column up
-      for (let [j, k] = [0, 0]; j < boardSize; j++) {
-        if (newGrid[j][i] !== 0) {
-          newGrid[k++][i] = newGrid[j][i];
-        }
-        if (j === boardSize - 1) {
-          for (let l = k; l < boardSize; l++)newGrid[l][i] = 0;
-        }
-      }
-      //Merge the column
-      for (let j = 0; j < boardSize - 1; j++) {
-        if (newGrid[j][i] === 0) break;
-        if (newGrid[j][i] === newGrid[j + 1][i]) {
-          newGrid[j][i] += newGrid[j + 1][i];
-          addscore += newGrid[j][i];
-          for (let k = j + 1; k < boardSize - 1; k++) {
-            newGrid[k][i] = newGrid[k + 1][i];
-          }
-          newGrid[boardSize - 1][i] = 0;
-        }
-      }*/
       for ([j, k, up_bound] = [0, -1, 0]; j < boardSize; j++) {
         if (newGrid[j][i] === 0) continue;
         if (k === -1) k = j;
@@ -261,6 +224,7 @@ function Game() {
         }
         else { //Merge
           newGrid[up_bound][i] = newGrid[j][i] * 2;
+          addscore += newGrid[up_bound][i];
           tilesMovement.set(
             isReverse ? [i, boardSize - k - 1].toString() : [i, k].toString(),
             { newPos: (isReverse ? [i, boardSize - up_bound - 1] : [i, up_bound]), visible: false, isNew: false }
@@ -331,9 +295,8 @@ function Game() {
     console.log(curTiles);
   }
 
-  /**
-   * 模拟算法返回的数据
-   */
+  /*
+    模拟算法返回的数据
   // 初始化旧的Tiles
   const createTiles = () => {
     const tiles = [];
@@ -384,8 +347,7 @@ function Game() {
   // 0 0 2 0    // 这一行的2是新增的
   // 0 0 0 0
   // 4 0 4 0
-  /**
-   *  模拟算法的返回值
+   模拟算法的返回值
    */
 
   /**
@@ -467,8 +429,8 @@ function Game() {
       ></GameBoard>
       {/* <button onClick={(e) => testState()}>Logic test</button> */}
       {/* <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button> */}
-      <button onClick={(e) => createTiles()}>Reset tiles</button>
-      <button onClick={(e) => updateTiles(tilesMovement, testNewTiles)}>Move Down（不要单独按）</button>
+      {/*<button onClick={(e) => createTiles()}>Reset tiles</button>*/}
+      {/*<button onClick={(e) => updateTiles(tilesMovement, testNewTiles)}>Move Down（不要单独按）</button>*/}
     </div>
   );
 }
