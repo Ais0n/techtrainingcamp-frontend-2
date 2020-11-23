@@ -283,14 +283,19 @@ function Game() {
   const testNewTiles = [{position:[2,3], value:4}, {position:[2,1], value:2}];
   /**
    * 根据算法返回的结果对tiles进行更新
+   * {tilesMovement}：Map 棋盘上所有可见tile的新位置
+   * {testNewTiles}: array 棋盘上新增的tile
    */
   const updateTiles = (tilesMovement,testNewTiles)=>{
     // 首先删除visible===false的tile
+    // 一定要先删除不可见的tile，再更新剩下的tiles
     const allVisibleTiles = tiles.filter(tile=>tile.visible===true);
     // 其次更新tiles的位置，并将isNew设置为false
     console.log("allVisibleTiles",allVisibleTiles);
     const tilesNewPos = allVisibleTiles.map(tile=>{
-      tile.position=tilesMovement.get(tile.position.toString()).newPos;
+      let tileMove = tilesMovement.get(tile.position.toString());
+      tile.position=tileMove.newPos;
+      tile.visible=tileMove.visible;
       tile.isNew = false;
       return tile;
     });
@@ -305,6 +310,7 @@ function Game() {
         isNew:  true
       })
     }
+    // 更新之后一共会用5个tile，其中3个可以在棋盘上见到，剩下的2个会在下一次更新时删掉
     setTiles(tilesNewPos);
   }
 
@@ -349,8 +355,8 @@ function Game() {
         tiles={tiles}
         //tileValue={value} // TileValue for test
       ></GameBoard>
-      <button onClick={(e) => testState()}>Logic test</button>
-      <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button>
+      {/* <button onClick={(e) => testState()}>Logic test</button> */}
+      {/* <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button> */}
       <button onClick={(e)=> createTiles()}>Create some tiles</button>
       <button onClick={(e)=>updateTiles(tilesMovement,testNewTiles)}>Move Down</button>
     </div>
