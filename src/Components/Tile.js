@@ -46,7 +46,10 @@ function Tile(props){
     colorOfValue.set(4,"#ede1c9");
     colorOfValue.set(8,"#f3b27a");
     colorOfValue.set(16,"#f69664");
-
+    colorOfValue.set(32,"#f77b5f");
+    colorOfValue.set(64,"#f75f3a");
+    colorOfValue.set(128,"#edd074");
+    colorOfValue.set(256,"#ff4e00");
     /**
      * 根据Tile得值返回对应颜色
      * @param {number} value 
@@ -62,32 +65,55 @@ function Tile(props){
     /**
      *  设置动画参数
      */
+    // tile移动动画
     const translate = useSpring({
         from: {
           //transform: "translateX(0px)",
+          //transform: props.isNew? `scale(0.5)` : `scale(1)`
           // position: "absolute",
            //left: "0px",
            //top: "0px"
+          //scale: props.isNew? 0.8 : 1
         },
         to: {
           //transform: "translateX(-100px)",
+          //transform:`scale(1)`,
+          //transform: `scale(1)`,
           position: "absolute",
           left: `${props.position[0] * pixleOfSize.get(props.size)}px`,
           top: `${props.position[1] * pixleOfSize.get(props.size)}px`,
           backgroundColor: setColor(props.value)
         },
         config: {
-          duration: 300
+          duration: 100
         }
       });
-      const hidden = useSpring({
-        delay:500,
-        to:{visibility: `${props.visible? "visible":"hidden"}`},
+
+      // tile消失动画
+    const hidden = useSpring({
+        delay:60,
+        from:{opacity: `${props.visible? "1":"0"}`},
+        to:{opacity: `${props.visible? "1":"0"}`},
+        duration: 40
       })
-    
+
+    // tile弹出动画
+    const popUp = useSpring({
+        delay:50,
+        from: {
+          transform: props.isNew? `scale(0)` : `scale(1)`
+        },
+        to: {
+          transform: `scale(1)`
+        },
+        config:{
+          duration:50
+        }
+    })  
+
     return (
       <animated.div
-        style={{...translate,...hidden}}
+        style={{...translate,...hidden, ...popUp}}
         className={`tile ${setSizeClass(props.size)}`}
     >{props.value}</animated.div>
     );
@@ -101,7 +127,9 @@ Tile.propTypes = {
   /** Tile上显示的值 e.g 2,4,8,16 etc. */
   value: PropTypes.number,
   /** Tile是否可见 */
-  visible: PropTypes.bool
+  visible: PropTypes.bool,
+  /** 是否是新tile */
+  isNew: PropTypes.bool
 }
 
 export default Tile;
