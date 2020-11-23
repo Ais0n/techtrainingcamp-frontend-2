@@ -85,20 +85,21 @@ function Tile(props){
           backgroundColor: setColor(props.value)
         },
         config: {
-          duration: 200
+          duration: 100
         }
       });
 
       // tile消失动画
     const hidden = useSpring({
-        delay:150,
+        delay:60,
         from:{opacity: `${props.visible? "1":"0"}`},
         to:{opacity: `${props.visible? "1":"0"}`},
+        duration: 40
       })
 
     // tile弹出动画
     const popUp = useSpring({
-        delay:150,
+        delay:50,
         from: {
           transform: props.isNew? `scale(0)` : `scale(1)`
         },
@@ -106,7 +107,7 @@ function Tile(props){
           transform: `scale(1)`
         },
         config:{
-          duration:100
+          duration:50
         }
     })  
 

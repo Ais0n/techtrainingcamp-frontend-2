@@ -24,7 +24,7 @@ function GameBoard(props){
                 break;
         }
         return copyNumbers.map((number, index)=>
-            <div className={`gridCell ${cellSize}`} key={index}>{number===0? "":number.toString()}</div>
+            <div className={`gridCell ${cellSize}`} key={index}>{/*number===0? "":number.toString()*/}</div>
         )
     }
 
