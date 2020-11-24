@@ -17,7 +17,7 @@ function App() {
           </Route>
           <Route path="/">
             {/* 开始界面可以直接在这里写，但最好还是写成以一个组件的形式 */}
-            <div id=" id="wrapper>
+            <div id="warpper">
               <button><Link to="/singleGame">Start Single Game</Link></button>
             </div>
           </Route>
