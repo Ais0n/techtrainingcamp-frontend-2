@@ -4,6 +4,12 @@ import cloneDeep from 'clone-deep';
 import '../asset/css/dist/style.css'
 import GameInfo from './GameInfo';
 import GameBoard from './GameBoard';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 function Game() {
   const [isNewGame, setNewGame] = useState(true);
   const [boardSize, setBoardSize] = useState(4);
@@ -427,6 +433,7 @@ function Game() {
         tiles={tiles}
       //tileValue={value} // TileValue for test
       ></GameBoard>
+      <button onClick={(e)=>{alert("Game will be reset")}}><Link to="/">Back</Link></button>
       {/* <button onClick={(e) => testState()}>Logic test</button> */}
       {/* <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button> */}
       {/*<button onClick={(e) => createTiles()}>Reset tiles</button>*/}
