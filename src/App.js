@@ -1,8 +1,9 @@
 import Game from './Components/Game';
+import MainPage from './Components/MainPage';
 function App() {
   return (
     <div className="App">
-      <Game></Game>
+      <MainPage></MainPage>
       <footer> This is the game for the bootcamp in ByteDance</footer>
     </div>
   );
