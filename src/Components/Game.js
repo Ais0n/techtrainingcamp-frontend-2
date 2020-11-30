@@ -82,7 +82,8 @@ function Game() {
     console.table(numbers);
   }
 
-  const handleKeyUp = (e) => {
+  const handleKeyDown = (e) => {
+    e.preventDefault();
     console.log(gridNumbers);
     //if the key is not an arrow key, return
     if (e.keyCode < 37 || e.keyCode > 40) return;
@@ -405,8 +406,8 @@ function Game() {
       initialNumbers(boardSize, setGridNumbers);
       setNewGame(false);
     }
-    document.addEventListener("keyup", handleKeyUp);
-    return () => document.removeEventListener("keyup", handleKeyUp);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
     // console.table(gridNumbers);
     // console.log(isNewGame);
   }, [gridNumbers, tiles]);
