@@ -9705,6 +9705,11 @@ react-styleguidist@^11.1.3:
     webpack-dev-server "^3.11.0"
     webpack-merge "^4.2.2"
 
+react-swipeable@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npm.taobao.org/react-swipeable/download/react-swipeable-6.0.0.tgz#356ec39d28d6ea19fd27dfee1d5fab5d59d1d060"
+  integrity sha1-NW7DnSjW6hn9J9/uHV+rXVnR0GA=
+
 react@^17.0.1:
   version "17.0.1"
   resolved "https://registry.npm.taobao.org/react/download/react-17.0.1.tgz?cache=0&sync_timestamp=1603367575957&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact%2Fdownload%2Freact-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"

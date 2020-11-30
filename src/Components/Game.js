@@ -4,6 +4,7 @@ import cloneDeep from 'clone-deep';
 import '../asset/css/dist/style.css'
 import GameInfo from './GameInfo';
 import GameBoard from './GameBoard';
+import { useSwipeable } from "react-swipeable";
 import RemotePlayerGames from './multiPlayer/RemotePlayerGames';
 
 function Game() {
@@ -83,14 +84,6 @@ function Game() {
   }
 
   const handleKeyDown = (event) => {
-    // e.preventDefault();
-    // console.log(gridNumbers);
-    // //if the key is not an arrow key, return
-    // if (e.keyCode < 37 || e.keyCode > 40) return;
-    // const direction = e.keyCode - 37;
-    // console.log(direction);
-    // mergeGrid(direction);
-    // setLose(checkLose());
     if(event.keyCode>=37 && event.keyCode<=40){
       event.preventDefault();
       const direction = event.keyCode - 37;
@@ -101,16 +94,28 @@ function Game() {
       return;
   }
 
-  /*function checkNew(j, i) {
-    let res = false;
-    for (let item in testNewTiles) {
-      if (item.position == [j, i]) {
-        res = true;
-        break;
-      }
-    }
-    return res;
-  }*/
+  // touch event
+  /**
+   * 
+   * @param {number} direction 
+   * direction = 0 left
+   * direction = 1 up
+   * direction = 2 right
+   * direction = 3 down
+   */
+  const move = (direction)=>{
+    mergeGrid(direction);
+    setLose(checkLose());
+  }
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => move(0),
+    onSwipedUp: () => move(1),
+    onSwipedRight: () => move(2),
+    onSwipedDown: () => move(3),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
 
   const mergeGrid = (direction) => {
     tilesMovement.clear();
@@ -421,6 +426,7 @@ function Game() {
   }, [gridNumbers, tiles]);
 
   return (
+    <div {...handlers}>
     <div id="myGame">
       <div id="gameTitle">2048 Online Game</div>
       <GameInfo
@@ -442,6 +448,7 @@ function Game() {
       {/* <button onClick={(e)=> addTile([0,0],256)}>NewTile!</button> */}
       {/*<button onClick={(e) => createTiles()}>Reset tiles</button>*/}
       {/*<button onClick={(e) => updateTiles(tilesMovement, testNewTiles)}>Move Down（不要单独按）</button>*/}
+    </div>
     </div>
   );
 }
