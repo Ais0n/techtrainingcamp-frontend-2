@@ -1,8 +1,9 @@
 import GameWithRemote from './GameWithRemote';
 import React from "react"
-import { useSpring, animated } from "react-spring";
+import {Spring} from 'react-spring/renderprops'
 import PropTypes from 'prop-types';
 import GreetingPage from './GreetingPage/GreetingPage'
+
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -28,7 +29,10 @@ class MainPage extends React.Component {
         console.log(this.state.gameBoardSize);
     }
 
+
+
     render() {
+
         const isGameStarted = this.state.isGameStarted;
         let page;
         if (isGameStarted) {
@@ -37,8 +41,26 @@ class MainPage extends React.Component {
             page = <GreetingPage onStart={this.onStart} onChangeSize={this.onChangeSize}></GreetingPage>;
         }
 
+        // return (
+        //   <Spring   from={{ opacity: 0 }}
+        //   to={{ opacity: 1 }} config={{duration:1000}}>
+        //     {(props) => (
+        //       <div className="MainPage" style={props}>
+        //         {page}
+        //       </div>
+        //     )}
+        //   </Spring>
+        // );
         return (
-            <div className="MainPage">{page}</div>
+          <div className="MainPage">
+            <Spring
+              from={{ opacity:0}}
+              to={{ opacity: 1}}
+              config={{ duration: 800 }}
+            >
+              {(props) => <div style={props}>{page}</div>}
+            </Spring>
+          </div>
         );
     }
 
