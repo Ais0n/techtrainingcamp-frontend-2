@@ -82,15 +82,23 @@ function Game() {
     console.table(numbers);
   }
 
-  const handleKeyDown = (e) => {
-    e.preventDefault();
-    console.log(gridNumbers);
-    //if the key is not an arrow key, return
-    if (e.keyCode < 37 || e.keyCode > 40) return;
-    const direction = e.keyCode - 37;
-    console.log(direction);
-    mergeGrid(direction);
-    setLose(checkLose());
+  const handleKeyDown = (event) => {
+    // e.preventDefault();
+    // console.log(gridNumbers);
+    // //if the key is not an arrow key, return
+    // if (e.keyCode < 37 || e.keyCode > 40) return;
+    // const direction = e.keyCode - 37;
+    // console.log(direction);
+    // mergeGrid(direction);
+    // setLose(checkLose());
+    if(event.keyCode>=37 && event.keyCode<=40){
+      event.preventDefault();
+      const direction = event.keyCode - 37;
+      mergeGrid(direction);
+      setLose(checkLose());
+    }
+    else
+      return;
   }
 
   /*function checkNew(j, i) {
