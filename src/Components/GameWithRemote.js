@@ -24,8 +24,8 @@ class Main extends React.Component {
   render() {
     return (
       <div className="Main" style={MainStyle}>
-        <div style={{gridColumn: "1"}}><RemotePlayerGames></RemotePlayerGames></div>
-        <div style={{gridColumn: "2"}}><Game></Game></div>
+        <div style={{gridColumn: "1"}}><RemotePlayerGames boardSize={this.props.boardSize}></RemotePlayerGames></div>
+        <div style={{gridColumn: "2"}}><Game boardSize={this.props.boardSize}></Game></div>
       </div>
     );
   }

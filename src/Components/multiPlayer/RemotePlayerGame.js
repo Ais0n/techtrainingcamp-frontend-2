@@ -25,13 +25,27 @@ class RemotePlayerGame extends React.Component {
 
     // this.props.active = false;
     // this.props.nickname = "remote player";
+
+    this.getTiles = this.getTiles.bind(this);
+
+    this.state = {
+      tiles: [[0, 2, 4, 8, 0], [16, 32, 64, 128, 0], [256, 512, 1024, 2048, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]],
+    }
+
+    this.getTiles();
+  }
+
+  getTiles() {
+    this.setState({
+      tiles: new Array(this.props.boardSize).fill(new Array(this.props.boardSize).fill(0))
+    })
   }
 
   render() {
     return (
       <div className="RemotePlayerGame" style={remotePlayerGameStyle}>
         <RemotePlayerGameInfo nickname="player" score="123123"></RemotePlayerGameInfo>
-        <RemotePlayerGameBoard boardSize={4} tiles={[[0, 2, 4, 8], [16, 32, 64, 128], [256, 512, 1024, 2048], [0, 0, 0, 0]]}></RemotePlayerGameBoard>
+        <RemotePlayerGameBoard boardSize={this.props.boardSize} tiles={this.state.tiles}></RemotePlayerGameBoard>
       </div>
     );
   }

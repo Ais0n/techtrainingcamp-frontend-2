@@ -4,11 +4,9 @@ import cloneDeep from 'clone-deep';
 import '../asset/css/dist/style.css'
 import GameInfo from './GameInfo';
 import GameBoard from './GameBoard';
-import RemotePlayerGames from './multiPlayer/RemotePlayerGames';
-
-function Game() {
+function Game(props) {
   const [isNewGame, setNewGame] = useState(true);
-  const [boardSize, setBoardSize] = useState(4);
+  const [boardSize, setBoardSize] = useState(props.boardSize);
   const [score, setScore] = useState(0);
   const [gridNumbers, setGridNumbers] = useState([]);
   const [tiles, setTiles] = useState([]); // serve as a array to store info of all the tiles

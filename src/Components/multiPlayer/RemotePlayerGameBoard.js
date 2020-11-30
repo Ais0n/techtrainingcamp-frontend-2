@@ -120,6 +120,11 @@ class RemotePlayerGameBoard extends React.Component {
   renderEachRow(rowIndex) {
     // different css style for different size
     let numbers = new Array(this.props.boardSize).fill(0);
+    numbers.forEach((number, index) => {
+      numbers[index] = this.props.tiles[rowIndex][index];
+    })
+    console.log(numbers);
+
     let cellSize = 'gridCell';
     switch (this.props.boardSize) {
         case 3:
@@ -135,7 +140,7 @@ class RemotePlayerGameBoard extends React.Component {
             break;
     }
     
-    return this.props.tiles[rowIndex].map((number, index)=>
+    return numbers.map((number, index) =>
         <div className={`gridCell ${cellSize}`} key={index} style={this.getGridStyle(number)}>{number != 0 ? number : null}</div>
     )
   }
@@ -143,9 +148,9 @@ class RemotePlayerGameBoard extends React.Component {
   renderGridRow() {
     const numbers = new Array(this.props.boardSize).fill(0);
 
-    return numbers.map((_, index)=>
+    return numbers.map((_, index)=> 
         <div className='RemotePlayerGameBoardGridRow' key={index} style={styles.remotePlayerGameBoardGridRowStyle}>
-            {this.renderEachRow(index)}
+            {index < this.props.boardSize ? this.renderEachRow(index) : null}
         </div>
     )
   }
