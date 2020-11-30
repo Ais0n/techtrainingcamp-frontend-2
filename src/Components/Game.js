@@ -4,6 +4,8 @@ import cloneDeep from 'clone-deep';
 import '../asset/css/dist/style.css'
 import GameInfo from './GameInfo';
 import GameBoard from './GameBoard';
+import RemotePlayerGames from './multiPlayer/RemotePlayerGames';
+
 function Game() {
   const [isNewGame, setNewGame] = useState(true);
   const [boardSize, setBoardSize] = useState(4);
