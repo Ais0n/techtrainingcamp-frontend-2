@@ -1,4 +1,4 @@
-import Game from './Components/Game';
+import Game from './Components/GameWithRemote';
 import MainPage from './Components/MainPage';
 function App() {
   return (

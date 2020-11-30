@@ -1,4 +1,4 @@
-import Game from './Game';
+import GameWithRemote from './GameWithRemote';
 import React from "react"
 import { useSpring, animated } from "react-spring";
 import PropTypes from 'prop-types';
@@ -32,7 +32,7 @@ class MainPage extends React.Component {
         const isGameStarted = this.state.isGameStarted;
         let page;
         if (isGameStarted) {
-            page = <Game boardSize={this.state.gameBoardSize}></Game>;
+            page = <GameWithRemote boardSize={this.state.gameBoardSize}></GameWithRemote>;
         } else {
             page = <GreetingPage onStart={this.onStart} onChangeSize={this.onChangeSize}></GreetingPage>;
         }
