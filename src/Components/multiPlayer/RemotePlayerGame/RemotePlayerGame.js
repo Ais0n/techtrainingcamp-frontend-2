@@ -2,19 +2,10 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import PropTypes from "prop-types";
 
-import RemotePlayerGameBoard from "./RemotePlayerGameBoard";
-import RemotePlayerGameInfo from "./RemotePlayeGameInfo";
+import RemotePlayerGameBoard from "../RemotePlayerGameBoard/RemotePlayerGameBoard";
+import RemotePlayerGameInfo from "../RemotePlayerGameInfo/RemotePlayeGameInfo";
 
-
-const remotePlayerGameStyle = {
-  width: "260px",
-  height: "280px",
-
-  background: "rgba(0, 0, 0, 0.1)",
-  borderRadius: "5px",
-
-  textAlign: "-webkit-center",
-}
+import "./dist/style.css"
 
 class RemotePlayerGame extends React.Component {
   constructor(props) {
@@ -43,7 +34,7 @@ class RemotePlayerGame extends React.Component {
 
   render() {
     return (
-      <div className="RemotePlayerGame" style={remotePlayerGameStyle}>
+      <div className="RemotePlayerGame">
         <RemotePlayerGameInfo nickname="player" score="123123"></RemotePlayerGameInfo>
         <RemotePlayerGameBoard boardSize={this.props.boardSize} tiles={this.state.tiles}></RemotePlayerGameBoard>
       </div>
