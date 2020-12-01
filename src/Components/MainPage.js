@@ -13,31 +13,46 @@ class MainPage extends React.Component {
     this.state = {
       isGameStarted: false,
       gameBoardSize: 4,
+      opponentBoard: new Array(5).fill([0,0,0,0,0])
     };
     this.onStart = this.onStart.bind(this);
     this.onChangeSize = this.onChangeSize.bind(this);
   }
 
-    client = new W3CWebSocket("ws://127.0.0.1:8000");
+  client = new W3CWebSocket("ws://127.0.0.1:8000");
   /**
-   * 
-   * @param {string} nickname 
+   *
+   * @param {string} nickname
    * 点击开始游戏后，建立链接，发送玩家信息
    */
   onStart(nickname) {
-    //const client = new W3CWebSocket("ws://127.0.0.1:8000");
-    //this.setState((prevState) => ({
-    //    socket: client,
-    //  }))
-      const userData = {
-          name: nickname
+    const userData = {
+      type: 'initGame',
+      name: nickname,
+    };
+    this.client.send(JSON.stringify(userData));
+    console.log("send nickname ", nickname);
+    this.client.onmessage = (evt) => {
+      // listen to data sent from the websocket server
+      // type:initGame / gaming
+      const message = JSON.parse(evt.data);
+      if (message.type === "initGame") {
+        console.log("opponent name: ", message.name);
+        this.setState((prevState) => ({
+            isGameStarted: true,
+          }));
+      } else if (message.type === "gaming") {
+        console.log("BoardNumber", message.board);
+        this.setState((prevState) => ({
+            opponentBoard: message.board,
+          }));
+      } else {
+        console.warn("unknown message: ", message);
       }
-      this.client.send(JSON.stringify(userData));
-      console.log("send nickname ",nickname)
-  
-    this.setState((prevState) => ({
-      isGameStarted: true,
-    }));
+      console.log(message);
+    };
+
+
   }
 
   onChangeSize(newSize) {
@@ -52,7 +67,11 @@ class MainPage extends React.Component {
     let page;
     if (isGameStarted) {
       page = (
-        <GameWithRemote boardSize={this.state.gameBoardSize} client={this.client}></GameWithRemote>
+        <GameWithRemote
+          boardSize={this.state.gameBoardSize}
+          client={this.client}
+          board={this.state.opponentBoard}
+        ></GameWithRemote>
       );
     } else {
       page = (

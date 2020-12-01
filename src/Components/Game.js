@@ -83,6 +83,7 @@ function Game(props) {
       const direction = event.keyCode - 37;
       mergeGrid(direction);
       const boardData = {
+        'type': 'gaming',
         'board': gridNumbers
       }
       props.client.send(JSON.stringify(boardData))
