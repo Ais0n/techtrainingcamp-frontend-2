@@ -1,8 +1,6 @@
-import Game from "../Game";
 import React from "react";
-import { useSpring, animated } from "react-spring";
-import PropTypes from "prop-types";
 import BoardSizeTabGroup from "./BoardSizeTabGroup";
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 const warp = {
   display: "block",
@@ -79,6 +77,7 @@ class StartPage extends React.Component {
     super(props);
     this.state = {
       isGameStarted: true,
+      nickname: "nickname"
     };
   }
 
@@ -86,6 +85,12 @@ class StartPage extends React.Component {
     console.log(value);
     this.props.onChangeSize(value);
   };
+
+  updateNickname(evt) {
+    this.setState({
+      nickname: evt.target.value
+    });
+  }
 
   render() {
     const { value1, value2, value3, value4 } = this.state;
@@ -104,10 +109,10 @@ class StartPage extends React.Component {
           onChange={this.onChange}
         ></BoardSizeTabGroup>
         <div>
-          <input style={nicknameInput} align="center" placeholder="nickname"></input>
+          <input style={nicknameInput} value={this.state.nickname} onChange={evt => this.updateNickname(evt)} align="center"></input>
         </div>
         <div>
-          <button style={startButton} onClick={this.props.onStart}>start</button>
+          <button style={startButton} onClick={(e)=>this.props.onStart(this.state.nickname)}>start</button>
         </div>
       </div>
     );
