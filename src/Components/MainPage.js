@@ -6,6 +6,7 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 import GreetingPage from './GreetingPage/GreetingPage'
 
 
+const client = new W3CWebSocket("ws://127.0.0.1:8000");
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class MainPage extends React.Component {
     this.onChangeSize = this.onChangeSize.bind(this);
   }
 
-  client = new W3CWebSocket("ws://127.0.0.1:8000");
+  
   /**
    *
    * @param {string} nickname
@@ -29,10 +30,11 @@ class MainPage extends React.Component {
     const userData = {
       type: 'initGame',
       name: nickname,
+      id: -1
     };
-    this.client.send(JSON.stringify(userData));
+    client.send(JSON.stringify(userData));
     console.log("send nickname ", nickname);
-    this.client.onmessage = (evt) => {
+    client.onmessage = (evt) => {
       // listen to data sent from the websocket server
       // type:initGame / gaming
       const message = JSON.parse(evt.data);
@@ -46,7 +48,14 @@ class MainPage extends React.Component {
         this.setState((prevState) => ({
             opponentBoard: message.board,
           }));
-      } else {
+      }  else if(message.type==="waiting"){
+        //等待匹配 500ms后再次查询
+        userData.id = message.id;
+        setTimeout(()=>{
+          client.send(JSON.stringify(userData));
+        },500);
+      }
+      else {
         console.warn("unknown message: ", message);
       }
       console.log(message);
@@ -69,7 +78,7 @@ class MainPage extends React.Component {
       page = (
         <GameWithRemote
           boardSize={this.state.gameBoardSize}
-          client={this.client}
+          client={client}
           board={this.state.opponentBoard}
         ></GameWithRemote>
       );
