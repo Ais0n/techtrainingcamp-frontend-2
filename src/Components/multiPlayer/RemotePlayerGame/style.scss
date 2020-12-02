@@ -1,0 +1,17 @@
+
+$card-width-height-ratio: 13 / 14.5 ;
+$remote-player-game-card-width: 400px;
+$remote-player-game-card-height: $remote-player-game-card-width / $card-width-height-ratio;
+$border-radius: 5 / 260 * $remote-player-game-card-width;
+
+div.RemotePlayerGame {
+  $width: $remote-player-game-card-width;
+
+  width: $width;
+  height: $remote-player-game-card-height;
+
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: $border-radius;
+
+  text-align: -webkit-center;
+}

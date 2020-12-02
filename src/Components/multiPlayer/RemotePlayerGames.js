@@ -2,9 +2,9 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import PropTypes from "prop-types";
 
-import RemotePlayerGameBoard from "./RemotePlayerGameBoard";
-import RemotePlayerGameInfo from "./RemotePlayeGameInfo";
-import RemotePlayerGame from "./RemotePlayerGame";
+import RemotePlayerGameBoard from "./RemotePlayerGameBoard/RemotePlayerGameBoard";
+import RemotePlayerGameInfo from "./RemotePlayerGameInfo/RemotePlayeGameInfo";
+import RemotePlayerGame from "./RemotePlayerGame/RemotePlayerGame";
 
 
 const remotePlayerGamesStyle = {
@@ -23,8 +23,6 @@ class RemotePlayerGames extends React.Component {
     return (
       <div className="RemotePlayerGames" style={remotePlayerGamesStyle}>
         <div style={{gridRow: "1", gridColumn: "1"}}><RemotePlayerGame boardSize={this.props.boardSize}></RemotePlayerGame></div>
-        <div style={{gridRow: "2", gridColumn: "1"}}><RemotePlayerGame boardSize={this.props.boardSize}></RemotePlayerGame></div>
-        <div style={{gridRow: "3", gridColumn: "1"}}><RemotePlayerGame boardSize={this.props.boardSize}></RemotePlayerGame></div>
       </div>
     );
   }

@@ -1,0 +1,598 @@
+div.RemotePlayerGame {
+  width: 400px;
+  height: 446.1538461538px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 7.6923076923px;
+  text-align: -webkit-center;
+}
+
+div.RemotePlayerGameBoard {
+  background: #bbada0;
+  border-radius: 7.6923076923px;
+  width: 338.4615384615px;
+  height: 338.4615384615px;
+  text-align: center;
+  margin: 15.3846153846px;
+}
+
+div.RemotePlayerGameBoardGridRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.Grid-3x3-0 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  color: #776E65;
+  font-size: 62.6721385907px;
+}
+
+div.Grid-3x3-2 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #eee4da;
+  color: #776E65;
+  font-size: 62.6721385907px;
+}
+
+div.Grid-3x3-4 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ede1c9;
+  color: #776E65;
+  font-size: 62.6721385907px;
+}
+
+div.Grid-3x3-8 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f3b27a;
+  color: #776E65;
+  font-size: 62.6721385907px;
+}
+
+div.Grid-3x3-16 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f69664;
+  color: white;
+  font-size: 54.3158534452px;
+}
+
+div.Grid-3x3-32 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f77b5f;
+  color: white;
+  font-size: 54.3158534452px;
+}
+
+div.Grid-3x3-64 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f75f3a;
+  color: white;
+  font-size: 54.3158534452px;
+}
+
+div.Grid-3x3-128 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #edd074;
+  color: white;
+  font-size: 45.9595682998px;
+}
+
+div.Grid-3x3-256 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff4e00;
+  color: white;
+  font-size: 45.9595682998px;
+}
+
+div.Grid-3x3-512 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 45.9595682998px;
+}
+
+div.Grid-3x3-1024 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 37.6032831544px;
+}
+
+div.Grid-3x3-2048 {
+  margin: 3.8983516484px;
+  width: 101.3571428571px;
+  height: 101.3571428571px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 37.6032831544px;
+}
+
+div.Grid-4x4-0 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  color: #776E65;
+  font-size: 47.004103943px;
+}
+
+div.Grid-4x4-2 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #eee4da;
+  color: #776E65;
+  font-size: 47.004103943px;
+}
+
+div.Grid-4x4-4 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ede1c9;
+  color: #776E65;
+  font-size: 47.004103943px;
+}
+
+div.Grid-4x4-8 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f3b27a;
+  color: #776E65;
+  font-size: 47.004103943px;
+}
+
+div.Grid-4x4-16 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f69664;
+  color: white;
+  font-size: 40.7368900839px;
+}
+
+div.Grid-4x4-32 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f77b5f;
+  color: white;
+  font-size: 40.7368900839px;
+}
+
+div.Grid-4x4-64 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f75f3a;
+  color: white;
+  font-size: 40.7368900839px;
+}
+
+div.Grid-4x4-128 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #edd074;
+  color: white;
+  font-size: 34.4696762249px;
+}
+
+div.Grid-4x4-256 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff4e00;
+  color: white;
+  font-size: 34.4696762249px;
+}
+
+div.Grid-4x4-512 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 34.4696762249px;
+}
+
+div.Grid-4x4-1024 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 28.2024623658px;
+}
+
+div.Grid-4x4-2048 {
+  margin: 2.9237637363px;
+  width: 76.0178571429px;
+  height: 76.0178571429px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 28.2024623658px;
+}
+
+div.Grid-5x5-0 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  color: #776E65;
+  font-size: 37.6032831544px;
+}
+
+div.Grid-5x5-2 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #eee4da;
+  color: #776E65;
+  font-size: 37.6032831544px;
+}
+
+div.Grid-5x5-4 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ede1c9;
+  color: #776E65;
+  font-size: 37.6032831544px;
+}
+
+div.Grid-5x5-8 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f3b27a;
+  color: #776E65;
+  font-size: 37.6032831544px;
+}
+
+div.Grid-5x5-16 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f69664;
+  color: white;
+  font-size: 32.5895120671px;
+}
+
+div.Grid-5x5-32 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f77b5f;
+  color: white;
+  font-size: 32.5895120671px;
+}
+
+div.Grid-5x5-64 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #f75f3a;
+  color: white;
+  font-size: 32.5895120671px;
+}
+
+div.Grid-5x5-128 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #edd074;
+  color: white;
+  font-size: 27.5757409799px;
+}
+
+div.Grid-5x5-256 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff4e00;
+  color: white;
+  font-size: 27.5757409799px;
+}
+
+div.Grid-5x5-512 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 27.5757409799px;
+}
+
+div.Grid-5x5-1024 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 22.5619698926px;
+}
+
+div.Grid-5x5-2048 {
+  margin: 2.339010989px;
+  width: 60.8142857143px;
+  height: 60.8142857143px;
+  border-radius: 7.6923076923px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  background: #ff0000;
+  color: white;
+  font-size: 22.5619698926px;
+}

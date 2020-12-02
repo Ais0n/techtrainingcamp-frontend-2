@@ -1,0 +1,76 @@
+@import "../RemotePlayerGame/style.scss";
+@import "../RemotePlayerGameBoard/style.scss";
+
+$remote-player-game-info-height: 28 / 290 * $remote-player-game-card-height;
+
+div.RemotePlayerGameInfo {
+  display: grid;
+  width: $board-size-in-px;
+  height: $remote-player-game-info-height;
+  padding-top: 16px;
+  // paddingBottom: "16px",
+  text-align: center;
+  vertical-align: center;
+  align-items: center;
+}
+
+div.Nickname {
+  color: #776E65;
+  font-size: 26 / 28 * $remote-player-game-info-height;
+  line-height: $remote-player-game-info-height;
+
+  padding-left: 0.05 * $board-size-in-px;
+  padding-right: 0.05 * $board-size-in-px;
+
+  grid-column: 1;
+  text-align: left;
+  justify-self: left;
+}
+
+$score-wrap-width: 112 / 220 * $board-size-in-px;
+
+div.ScoreWrap {
+  width: $score-wrap-width;
+  height: 20 / 28 * $remote-player-game-info-height;
+
+  background: #BBADA0;
+  border-radius: $border-radius;
+
+  display: flex;
+  
+  grid-column: 2;
+  text-align: right;
+  justify-self: right;
+
+  display: grid;
+}
+
+$score-font-size: 16 / 28 * $remote-player-game-info-height;
+$score-line-height: 20 / 16 * $score-font-size;
+$score-padding: 0.03 * $score-wrap-width;
+
+div.ScoreTip {
+  font-weight: bold;
+  font-size: $score-font-size;
+  line-height: $score-line-height;
+
+  color: #FFFFFF;
+
+  padding-left: $score-padding;
+
+  grid-column: 1;
+  justify-self: left;
+}
+
+div.ScoreValue {
+  font-weight: bold;
+  font-size: $score-font-size;
+  line-height: $score-line-height;
+
+  color: #FFFFFF;
+
+  padding-right: $score-padding;
+
+  grid-column: 2;
+  justify-self: right;
+}

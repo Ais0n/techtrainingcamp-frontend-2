@@ -2,7 +2,7 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import PropTypes from "prop-types";
 
-import RemotePlayerGameBoard from "./RemotePlayerGameBoard";
+import RemotePlayerGameBoard from "./RemotePlayerGameBoard/RemotePlayerGameBoard";
 
 
 const colorOfValue = new Map();

@@ -1,0 +1,113 @@
+@import "../RemotePlayerGame/style.scss";
+
+$board-size-shrink-ratio: 22 / 26;
+$margin-top-radio: 1 / 22;
+$grid-content-margin-radio: 13 / 1;
+
+$board-size-in-px: $remote-player-game-card-width * $board-size-shrink-ratio;
+$grid-warp-padding-in-px: 5.5;
+
+div.RemotePlayerGameBoard {
+  background: #bbada0;
+  border-radius: $border-radius;
+
+  $width: $board-size-in-px;
+  $height: $width;
+
+  width: $width;
+  height: $height;
+
+  text-align: center;
+
+  margin: $margin-top-radio * $height;
+}
+
+div.RemotePlayerGameBoardGridRow {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+}
+
+@for $game-board-size from 3 through 5 {
+  @each $number in 0 2 4 8 16 32 64 128 256 512 1024 2048 {
+    // grid style
+    div.Grid-#{$game-board-size}x#{$game-board-size}-#{$number} {
+      $grid-margin-in-px: 0.5 *
+        (1 / (1 + $grid-content-margin-radio)) *
+        (($board-size-in-px - $grid-warp-padding-in-px * 2) / $game-board-size);
+
+      margin: $grid-margin-in-px;
+
+      $width: (($board-size-in-px - 2 * $grid-warp-padding-in-px) / $game-board-size - $grid-margin-in-px * 2);
+
+      width: $width;
+      height: $width;
+
+      border-radius: $border-radius;
+
+      font-weight: bold;
+      
+      display: flex;
+
+      text-align: center;
+      vertical-align: middle;
+      
+      justify-content: center;
+      align-items: center;
+
+      @if $number == 0 {
+        background: rgba(255, 255, 255, 0.4);
+        color: #776E65;
+      } @else if $number == 2 {
+        background: #eee4da;
+        color: #776E65;
+      } @else if $number == 4 {
+        background: #ede1c9;
+        color: #776E65;
+      } @else if $number == 8 {
+        background: #f3b27a;
+        color: #776E65;
+      } @else if $number == 16 {
+        background: #f69664;
+        color: white;
+      } @else if $number == 32 {
+        background: #f77b5f;
+        color: white;
+      } @else if $number == 64 {
+        background: #f75f3a;
+        color: white;
+      } @else if $number == 128 {
+        background: #edd074;
+        color: white;
+      } @else if $number == 256 {
+        background: #ff4e00;
+        color: white;
+      } @else if $number == 512 {
+        background: #ff0000;
+        color: white;
+      } @else if $number == 1024 {
+        background: #ff0000;
+        color: white;
+      } @else if $number == 2048 {
+        background: #ff0000;
+        color: white;
+      }
+
+      $first-font-size-raido: 30 / 48.5178; // first-font-size / width
+      $font-size-step-raido: 4 / 30; // font-size-step / first-font-size
+
+      $first-font-size: $first-font-size-raido * $width;
+      $font-size-step: $first-font-size * $font-size-step-raido;
+      @if $number <= 8 {
+        font-size: $first-font-size;
+      } @else if $number <= 64 {
+        font-size: $first-font-size - $font-size-step;
+      } @else if $number <= 512 {
+        font-size: $first-font-size - 2 * $font-size-step;
+      } @else if $number <= 8192 {
+        font-size: $first-font-size - 3 * $font-size-step;
+      }
+    }
+  }
+}
