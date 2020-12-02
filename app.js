@@ -24,9 +24,9 @@ io.on("connection", socket => {
             //socket.emit("name", nameList[0]);
         }
     })
-    socket.on("move", (board) => {
+    socket.on("move", (board, score) => {
         if (num_of_players == 2)
-            socket.to(default_room).emit("update", board);
+            socket.to(default_room).emit("update", board, score);
     })
 });
 
