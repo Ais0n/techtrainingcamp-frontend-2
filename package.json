@@ -1,0 +1,9 @@
+{
+    "name": "backend_2048",
+    "version": "0.0.1",
+    "description": "backend for 2048 @ bytedance",
+    "dependencies": {
+        "express": "^4.15.2",
+        "socket.io": "^3.0.3"
+    }
+}
