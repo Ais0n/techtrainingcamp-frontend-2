@@ -56,7 +56,6 @@ function Tile(props){
      */
     const setColor = (value)=>{
       let color = colorOfValue.get(value)
-      console.log(color);
       if(color===undefined)
         color = "red";     // waiting for change
       return color;

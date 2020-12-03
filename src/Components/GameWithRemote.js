@@ -33,8 +33,8 @@ class Main extends React.Component {
   render() {
     return (
       <div className="Main" style={this.getMainStyle()}>
-        <div style={{gridColumn: "1"}}><RemotePlayerGames boardSize={this.props.boardSize}></RemotePlayerGames></div>
-        <div style={{gridColumn: "2", borderLeft:"solid"}}><Game boardSize={this.props.boardSize}></Game></div>
+        <div style={{gridColumn: "1"}}><RemotePlayerGames boardSize={this.props.boardSize} board={this.props.board}></RemotePlayerGames></div>
+        <div style={{gridColumn: "2"}}><Game boardSize={this.props.boardSize} client={this.props.client}></Game></div>
       </div>
     );
   }
