@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import formateTime from "./formateTime";
-
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 /*
 startWith: number // 开始计时的时间 以毫秒记
 on: boolean // 是否开始. 初始为 false, 从 true 置为 false 时会将时间重新设置到 startWith; 从 false 置为 true 时会开始倒计时
@@ -32,6 +32,10 @@ class Timer extends Component {
       // 结束计时
       this.clearTimer();
       this.setState({finished: true});
+      const data = {
+        'type': 'finished'
+      }
+      this.props.client.send(JSON.stringify(data));
       this.props.onFinish();
     }
     
