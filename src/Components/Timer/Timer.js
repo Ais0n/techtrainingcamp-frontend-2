@@ -59,7 +59,7 @@ class Timer extends Component {
       if (this.state.time > 0) {
         this.setState({ time: --this.state.time })
       };
-    }, 1);
+    }, 10);
   }
 
   clearTimer = () => {
