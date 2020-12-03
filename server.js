@@ -86,6 +86,8 @@ wss.on('connection', function connection(ws) {
             console.log("send message ", data);
           }
         });
+        maxScore=0;
+        playerScore={};
       }
     }
   });
