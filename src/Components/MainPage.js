@@ -60,6 +60,9 @@ class MainPage extends React.Component {
         setTimeout(() => {
           client.send(JSON.stringify(userData));
         }, 500);
+      } else if(message.type === "end"){
+        if(message.win)alert("你赢了！");
+        else alert("你输了！");
       }
       else {
         console.warn("unknown message: ", message);

@@ -35,7 +35,7 @@ class Main extends React.Component {
   render() {
     return (
       <div className="Main" style={this.getMainStyle()}>
-        <div style={{gridRow: "1", gridColumn: "1 / 3", color: "#776E65"}}><Timer startWith={60 * 1000} on={this.props.isGameStarted} startWhileMounted={true} onFinish={() => console.log("finish timer")}></Timer></div>
+        <div style={{gridRow: "1", gridColumn: "1 / 3", color: "#776E65"}}><Timer startWith={10 * 100} on={this.props.isGameStarted} startWhileMounted={true} onFinish={() => console.log("finish timer")} client={this.props.client}></Timer></div>
         <div style={{gridColumn: "1"}}><RemotePlayerGames boardSize={this.props.boardSize} board={this.props.board} name={this.props.name} score={this.props.score}></RemotePlayerGames></div>
         <div style={{gridColumn: "2"}}><Game boardSize={this.props.boardSize} client={this.props.client}></Game></div>
       </div>
