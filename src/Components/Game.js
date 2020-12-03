@@ -82,12 +82,7 @@ function Game(props) {
       event.preventDefault();
       const direction = event.keyCode - 37;
       mergeGrid(direction);
-      const boardData = {
-        'type': 'gaming',
-        'board': gridNumbers
-      }
-      props.client.send(JSON.stringify(boardData))
-      console.log(props.socket);
+      //console.log(props.socket);
       setLose(checkLose());
     }
     else
@@ -112,7 +107,11 @@ function Game(props) {
     }
     var res = (newGrid === gridNumbers);
     if (!res) newGrid = addOneNumber(newGrid);
-
+    const boardData = {
+      'type': 'gaming',
+      'board': newGrid
+    }
+    props.client.send(JSON.stringify(boardData))
     console.table(newGrid);
     updateTiles(tilesMovement, testNewTiles);
     setScore(score + addscore);
