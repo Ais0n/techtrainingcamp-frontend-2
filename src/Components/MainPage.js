@@ -88,6 +88,7 @@ class MainPage extends React.Component {
           name={this.state.opponentName}
           board={this.state.opponentBoard}
           score={this.state.opponentScore}
+          isGameStarted={this.state.isGameStarted}
         ></GameWithRemote>
       );
     } else {

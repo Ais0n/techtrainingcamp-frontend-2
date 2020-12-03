@@ -48,6 +48,12 @@ class Timer extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.startWhileMounted) {
+      this.startTimer();
+    }
+  }
+
   startTimer = () => {
     this.timer = setInterval(() => {
       if (this.state.time > 0) {
