@@ -22,7 +22,7 @@ class RemotePlayerGames extends React.Component {
   render() {
     return (
       <div className="RemotePlayerGames" style={remotePlayerGamesStyle}>
-        <div style={{gridRow: "1", gridColumn: "1"}}><RemotePlayerGame boardSize={this.props.boardSize} board={this.props.board}></RemotePlayerGame></div>
+        <div style={{gridRow: "1", gridColumn: "1"}}><RemotePlayerGame boardSize={this.props.boardSize} board={this.props.board} name={this.props.name} score={this.props.score}></RemotePlayerGame></div>
         {/* <div style={{gridRow: "2", gridColumn: "1"}}><RemotePlayerGame boardSize={this.props.boardSize}></RemotePlayerGame></div>
         <div style={{gridRow: "3", gridColumn: "1"}}><RemotePlayerGame boardSize={this.props.boardSize}></RemotePlayerGame></div> */}
       </div>

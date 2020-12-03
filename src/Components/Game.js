@@ -109,7 +109,8 @@ function Game(props) {
     if (!res) newGrid = addOneNumber(newGrid);
     const boardData = {
       'type': 'gaming',
-      'board': newGrid
+      'board': newGrid,
+      'score': score+addscore
     }
     props.client.send(JSON.stringify(boardData))
     console.table(newGrid);

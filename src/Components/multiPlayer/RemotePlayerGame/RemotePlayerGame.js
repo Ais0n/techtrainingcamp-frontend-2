@@ -35,7 +35,7 @@ class RemotePlayerGame extends React.Component {
   render() {
     return (
       <div className="RemotePlayerGame">
-        <RemotePlayerGameInfo nickname="player" score="123123"></RemotePlayerGameInfo>
+        <RemotePlayerGameInfo nickname={this.props.name} score={this.props.score}></RemotePlayerGameInfo>
         <RemotePlayerGameBoard boardSize={this.props.boardSize} tiles={this.props.board}></RemotePlayerGameBoard>
       </div>
     );
